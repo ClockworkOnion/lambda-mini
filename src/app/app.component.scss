@@ -10,12 +10,13 @@ mat-expansion-panel {
 }
 
 .card-content {
-  // a class that creates some padding for the card content
   padding: 1rem;
-  & app-status,
-  & app-streamlist {
-    margin: 1rem 1rem;
-  }
+  margin: 1rem;
+}
+
+.panel {
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .logo {

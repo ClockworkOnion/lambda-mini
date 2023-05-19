@@ -1,0 +1,41 @@
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> View Registered Queries </mat-panel-title>
+    <mat-panel-description>
+      {{ panelOpenState ? "" : "View Registered Queries inside ChronicleDB" }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="container">
+    <mat-form-field appearance="outline">
+      <mat-label>Query ID</mat-label>
+      <input matInput #input placeholder="eg. Query1" [(ngModel)]="queryId" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Query</mat-label>
+      <input
+        matInput
+        #input
+        placeholder="the input query"
+        [(ngModel)]="query"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="buttons">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="registerQuery(queryId, query)"
+    >
+      Register Query
+    </button>
+  </div>
+  <div>
+    <span class="statusText">{{ statusText }}</span>
+  </div>
+</mat-expansion-panel>

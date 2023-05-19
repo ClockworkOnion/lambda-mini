@@ -1,0 +1,8 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+mat-form-field {
+  margin-right: 0.5rem;
+}

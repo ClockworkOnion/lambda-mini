@@ -14,6 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { StatusComponent } from './panels/status/status.component';
 import { StreamlistComponent } from './panels/streamlist/streamlist.component';
 import { CreateStreamComponent } from './panels/create-stream/create-stream.component';
+import { DeleteStreamComponent } from './panels/delete-stream/delete-stream.component';
+import { ViewQueriesComponent } from './panels/view-queries/view-queries.component';
+import { RegisterQueryComponent } from './panels/register-query/register-query.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { CreateStreamComponent } from './panels/create-stream/create-stream.comp
     StatusComponent,
     StreamlistComponent,
     CreateStreamComponent,
+    DeleteStreamComponent,
+    ViewQueriesComponent,
+    RegisterQueryComponent,
   ],
   imports: [
     BrowserModule,

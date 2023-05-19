@@ -10,7 +10,7 @@ import { ApiService } from '../../api.service';
 export class CreateStreamComponent {
   panelOpenState = false;
   streamName: string = '';
-  statusText: string = 'wip';
+  statusText: string = '';
   properties: streamProperty[] = [];
 
   constructor(private apiService: ApiService) {

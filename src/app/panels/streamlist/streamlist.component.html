@@ -12,9 +12,10 @@
       }}
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <p>Get all streams from JEPC.</p>
   <button mat-raised-button color="primary" (click)="getStreams()">
-    Get JEPC Streams
+    Get Streams
   </button>
-  {{ streams | json }}
+  <div class="streamsList">
+    {{ streams | json }}
+  </div>
 </mat-expansion-panel>
