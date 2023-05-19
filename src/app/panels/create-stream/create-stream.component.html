@@ -1,0 +1,56 @@
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Create Streams in ChronicleDB </mat-panel-title>
+    <mat-panel-description>
+      {{ panelOpenState ? "" : "Create Streams in ChronicleDB" }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Stream Name</mat-label>
+    <input
+      matInput
+      #input
+      maxlength="10"
+      placeholder="eg. Stream1"
+      [(ngModel)]="streamName"
+    />
+  </mat-form-field>
+
+  <div class="container" *ngFor="let property of properties">
+    <mat-form-field class="item" appearance="outline">
+      <mat-label>Property Name</mat-label>
+      <input
+        matInput
+        #input
+        maxlength="10"
+        placeholder="eg. property1"
+        [(ngModel)]="property.name"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="item" appearance="outline">
+      <mat-label>Property Type</mat-label>
+      <mat-select [(ngModel)]="property.type">
+        <mat-option value="String">String</mat-option>
+        <mat-option value="Ingeger">Integer</mat-option>
+        <mat-option value="Float">Float</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="addProperty()">
+      Add property
+    </button>
+    <button mat-raised-button color="primary" (click)="createStream()">
+      Create Stream
+    </button>
+  </div>
+  <div>
+    <span class="statusText">{{ statusText }}</span>
+  </div>
+</mat-expansion-panel>

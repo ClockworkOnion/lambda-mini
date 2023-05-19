@@ -1,7 +1,3 @@
-body {
-  background-color: grey;
-}
-
 mat-card {
   width: 80%;
   max-width: 58rem;
@@ -27,6 +23,7 @@ mat-expansion-panel {
   max-width: 10rem;
   margin: auto;
   display: block;
+  margin-bottom: 2rem;
 }
 
 button {
@@ -37,4 +34,8 @@ button {
   text-align: right;
   display: inline;
   float: right;
+}
+
+h2 {
+  margin-left: 1rem;
 }

@@ -5,7 +5,11 @@
   <mat-expansion-panel-header>
     <mat-panel-title> Get ChronicleDB Streams </mat-panel-title>
     <mat-panel-description>
-      {{ panelOpenState ? "" : "Get all streams from ChronicleDB." }}
+      {{
+        panelOpenState
+          ? ""
+          : "Get the names of all existing streams from ChronicleDB."
+      }}
     </mat-panel-description>
   </mat-expansion-panel-header>
   <p>Get all streams from JEPC.</p>

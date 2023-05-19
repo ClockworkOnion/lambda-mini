@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -47,10 +46,27 @@ export class ApiService {
       return (
         response?.body?.toString() ||
         'Failed to get streams (or no streams present?)'
-      ); // Does the reponse return an empty body, or is it a response without a body?
+      );
     } catch (error) {
       console.error(error);
       return 'Failed to get streams';
+    }
+  }
+
+  public async createStream(json: string): Promise<string> {
+    try {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      console.log(json);
+      const response = await this.http
+        .post('/api/chronicledb/streams', json, {
+          headers,
+          observe: 'response',
+        })
+        .toPromise();
+      console.log(response?.headers);
+      return response?.status.toString() || 'Failed to create stream';
+    } catch (error) {
+      return 'Failed to create stream';
     }
   }
 }
