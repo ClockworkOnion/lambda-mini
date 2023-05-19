@@ -1,0 +1,17 @@
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Get ChronicleDB Status </mat-panel-title>
+    <mat-panel-description>
+      {{
+        panelOpenState ? "" : "Check if ChronicleDB is running and accessible."
+      }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <button mat-raised-button color="primary" (click)="getStatus()">
+    Check Status
+  </button>
+  <span class="statusText">{{ statusText }}</span>
+</mat-expansion-panel>

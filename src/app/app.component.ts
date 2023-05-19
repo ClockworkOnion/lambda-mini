@@ -13,17 +13,11 @@ import { MatButton } from '@angular/material/button';
 export class AppComponent {
   constructor(private lambdaApi: ApiService) {}
   title = 'lambda-mini';
+  statusText = 'Press button to check status';
   panelOpenState = false;
 
   sampleMethod(): void {
     console.log('sample method:');
     console.log(this.lambdaApi.sampleString());
-  }
-
-  jepcStatus(): void {
-    console.log('jepc status:');
-    this.lambdaApi.getJepcStatus().subscribe((data) => {
-      console.log(data);
-    });
   }
 }

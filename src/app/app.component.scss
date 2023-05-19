@@ -1,12 +1,25 @@
+body {
+  background-color: grey;
+}
+
 mat-card {
   width: 80%;
   max-width: 58rem;
   margin: auto;
 }
 
+mat-expansion-panel {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 .card-content {
   // a class that creates some padding for the card content
   padding: 1rem;
+  & app-status,
+  & app-streamlist {
+    margin: 1rem 1rem;
+  }
 }
 
 .logo {
@@ -14,4 +27,14 @@ mat-card {
   max-width: 10rem;
   margin: auto;
   display: block;
+}
+
+button {
+  margin-left: 0;
+}
+
+.statusText {
+  text-align: right;
+  display: inline;
+  float: right;
 }

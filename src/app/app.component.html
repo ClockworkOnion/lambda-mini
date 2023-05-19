@@ -15,22 +15,7 @@
   </mat-card-header>
 
   <div class="card-content">
-    <mat-expansion-panel
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false"
-    >
-      <mat-expansion-panel-header>
-        <mat-panel-title> Get JEPC Status </mat-panel-title>
-        <mat-panel-description>
-          {{
-            panelOpenState ? "" : "Check if the JEPC is running and accessible."
-          }}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>Check if the JEPC is running and accessible.</p>
-      <button mat-button color="primary" (click)="jepcStatus()">
-        Get JEPC Status
-      </button>
-    </mat-expansion-panel>
+    <app-status></app-status>
+    <app-streamlist></app-streamlist>
   </div>
 </mat-card>
