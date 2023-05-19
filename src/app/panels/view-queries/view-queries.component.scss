@@ -1,0 +1,23 @@
+.queryListContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr auto auto;
+}
+
+.queryEntry,
+.queryIdEntry {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.queryControl,
+.tableHead {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.statusText {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}

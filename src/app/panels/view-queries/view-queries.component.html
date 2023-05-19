@@ -9,12 +9,35 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
 
+  <div *ngFor="let entry of queryList; let i = index">
+    <div class="queryListContainer">
+      <div class="queryIdEntry">{{ entry.queryId }}</div>
+      <div class="queryEntry">
+        {{ entry.query }}
+      </div>
+      <div>
+        <button
+          class="queryControl"
+          mat-stroked-button
+          color="primary"
+          (click)="deleteQuery(entry.queryId)"
+        >
+          Delete
+        </button>
+      </div>
+      <div>
+        <button class="queryControl" mat-stroked-button color="primary">
+          Evaluate
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="statusText">
+    <span>{{ statusText }}</span>
+  </div>
   <div class="buttons">
     <button mat-raised-button color="primary" (click)="getQueries()">
       Get Queries
     </button>
-  </div>
-  <div>
-    <span class="statusText">{{ statusText }}</span>
   </div>
 </mat-expansion-panel>

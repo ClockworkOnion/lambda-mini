@@ -121,5 +121,19 @@ export class ApiService {
     }
   }
 
+  public async deleteQuery(queryId: string): Promise<string> {
+    try {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const response = await this.http
+        .delete('/api/chronicledb/queries/registered/' + queryId, {
+          observe: 'response',
+        })
+        .toPromise();
+      return response?.status.toString() || 'Failed to delete query';
+    } catch (error) {
+      return 'Failed to delete query';
+    }
+  }
+
   //#endregion
 }
