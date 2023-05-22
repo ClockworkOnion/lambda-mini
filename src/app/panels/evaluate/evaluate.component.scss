@@ -1,0 +1,22 @@
+.statusText {
+  background-color: #f2f2f2;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.query-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.query-radio-button {
+  margin: 5px;
+}
+
+p {
+  margin: 1rem;
+}

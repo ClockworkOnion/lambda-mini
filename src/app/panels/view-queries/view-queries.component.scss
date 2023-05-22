@@ -1,6 +1,6 @@
 .queryListContainer {
   display: grid;
-  grid-template-columns: 1fr 3fr auto auto;
+  grid-template-columns: 1fr 3fr auto auto auto;
 }
 
 .queryEntry,
@@ -18,6 +18,9 @@
 }
 
 .statusText {
+  background-color: #f2f2f2;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
   margin: 0.5rem;
   padding: 0.5rem;
 }

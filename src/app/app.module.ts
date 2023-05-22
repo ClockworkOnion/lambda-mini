@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { StatusComponent } from './panels/status/status.component';
@@ -17,6 +18,8 @@ import { CreateStreamComponent } from './panels/create-stream/create-stream.comp
 import { DeleteStreamComponent } from './panels/delete-stream/delete-stream.component';
 import { ViewQueriesComponent } from './panels/view-queries/view-queries.component';
 import { RegisterQueryComponent } from './panels/register-query/register-query.component';
+import { GetSchemaComponent } from './panels/get-schema/get-schema.component';
+import { EvaluateComponent } from './panels/evaluate/evaluate.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { RegisterQueryComponent } from './panels/register-query/register-query.c
     DeleteStreamComponent,
     ViewQueriesComponent,
     RegisterQueryComponent,
+    GetSchemaComponent,
+    EvaluateComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +41,7 @@ import { RegisterQueryComponent } from './panels/register-query/register-query.c
     NoopAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    MatRadioModule,
     MatFormFieldModule,
     MatExpansionModule,
     MatSelectModule,

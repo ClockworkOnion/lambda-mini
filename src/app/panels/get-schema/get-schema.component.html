@@ -1,0 +1,35 @@
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Get Schema for a query </mat-panel-title>
+    <mat-panel-description>
+      {{ panelOpenState ? "" : "Compute the output schema of a given query" }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="queryInput">
+    <mat-form-field>
+      <mat-label>Enter query here</mat-label>
+      <input
+        matInput
+        #input
+        placeholder="eg. 'select * from stream1'"
+        [(ngModel)]="query"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="statusText">
+    <pre>
+    {{ statusText }}
+</pre
+    >
+  </div>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="getSchema()">
+      Get Schema
+    </button>
+  </div>
+</mat-expansion-panel>

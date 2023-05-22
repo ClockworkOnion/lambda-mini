@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
+import { queryInterface } from '../../interfaces/query';
 
-interface queryInterface {
-  queryId: string;
-  query: string;
-}
 @Component({
   selector: 'app-view-queries',
   templateUrl: './view-queries.component.html',
@@ -23,7 +20,6 @@ export class ViewQueriesComponent {
     this.apiService.getQueries().then((queries) => {
       console.log(queries);
       this.queryList = this.JSONtoQueryInterface(queries);
-      console.log(this.queryList);
       this.statusText = 'Existing Queries:' + queries;
       this.queries = queries;
       this.response = queries;
@@ -40,9 +36,16 @@ export class ViewQueriesComponent {
   }
 
   deleteQuery(queryId: string): void {
+    // TODO: add confirmation dialog
     this.apiService.deleteQuery(queryId).then((status) => {
       this.statusText = 'Status response: ' + status;
       this.getQueries();
+    });
+  }
+
+  getSchema(query: string): void {
+    this.apiService.getSchema(query).then((status) => {
+      this.statusText = 'Response from ChronicleDB:\n' + status;
     });
   }
 }

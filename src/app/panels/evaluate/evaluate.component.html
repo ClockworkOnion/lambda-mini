@@ -1,0 +1,55 @@
+<mat-expansion-panel
+  (opened)="panelOpenState = true; getQueries()"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Evaluate Queries </mat-panel-title>
+    <mat-panel-description>
+      {{ panelOpenState ? "" : "Evaluate existing queries inside ChronicleDB" }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <p>Select a query to evaluate</p>
+  <mat-radio-group
+    aria-labelledby="query-radio-group-label"
+    class="query-radio-group"
+    [(ngModel)]="selectedQuery"
+  >
+    <mat-radio-button
+      class="query-radio-button"
+      *ngFor="let query of queries"
+      [value]="query"
+    >
+      "{{ query.queryId }}" ({{ query.query }})
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <p>Select a time range to evaluate the query on:</p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Starting timestamp</mat-label>
+    <input matInput placeholder="eg. 0" [(ngModel)]="startTimestamp" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Ending timestamp</mat-label>
+    <input matInput placeholder="eg. 10" [(ngModel)]="endTimestamp" />
+  </mat-form-field>
+
+  <div class="statusText">
+    <pre>
+        
+  Selected query: {{ selectedQuery.queryId }} Start: {{
+        startTimestamp
+      }} End: {{ endTimestamp }}
+        {{ statusText }}</pre
+    >
+  </div>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="evaluate()">
+      Evaluate selected query
+    </button>
+    <button mat-raised-button color="primary" (click)="getQueries()">
+      Update Query List
+    </button>
+  </div>
+</mat-expansion-panel>

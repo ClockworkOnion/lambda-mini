@@ -135,5 +135,40 @@ export class ApiService {
     }
   }
 
+  public async getSchema(query: string): Promise<string> {
+    const body: string = `{"query": "${query}"}`;
+    try {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const response = await this.http
+        .post('/api/chronicledb/queries/schema', body, {
+          headers,
+          observe: 'response',
+        })
+        .toPromise();
+      return JSON.stringify(response?.body, null, 2) || 'Failed to get schema';
+    } catch (error) {}
+    return 'Failed to get schema';
+  }
+
+  public async evaluateQuery(
+    query: string,
+    startTimestamp: number,
+    endTimestamp: number
+  ): Promise<string> {
+    const body: string = '';
+    const urlPostfix: string = `${query}?startTime=${startTimestamp}&endTime=${endTimestamp}`;
+    try {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const response = await this.http
+        .post('/api/chronicledb/queries/registered/' + urlPostfix, body, {
+          headers,
+          observe: 'response',
+        })
+        .toPromise();
+      return JSON.stringify(response?.body, null, 2) || 'Failed to evaluate';
+    } catch (error) {}
+    return 'Failed to evaluate';
+  }
+
   //#endregion
 }

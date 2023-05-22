@@ -1,11 +1,15 @@
 <mat-expansion-panel
-  (opened)="panelOpenState = true"
+  (opened)="panelOpenState = true; getQueries()"
   (closed)="panelOpenState = false"
 >
   <mat-expansion-panel-header>
-    <mat-panel-title> View Registered Queries </mat-panel-title>
+    <mat-panel-title> View / Delete Registered Queries </mat-panel-title>
     <mat-panel-description>
-      {{ panelOpenState ? "" : "View Registered Queries inside ChronicleDB" }}
+      {{
+        panelOpenState
+          ? ""
+          : "View or delete registered queries inside ChronicleDB"
+      }}
     </mat-panel-description>
   </mat-expansion-panel-header>
 
@@ -15,6 +19,7 @@
       <div class="queryEntry">
         {{ entry.query }}
       </div>
+
       <div>
         <button
           class="queryControl"
@@ -25,19 +30,26 @@
           Delete
         </button>
       </div>
+
       <div>
-        <button class="queryControl" mat-stroked-button color="primary">
-          Evaluate
+        <button
+          class="queryControl"
+          mat-stroked-button
+          color="primary"
+          (click)="getSchema(entry.query)"
+        >
+          Get Schema
         </button>
       </div>
     </div>
   </div>
+
   <div class="statusText">
-    <span>{{ statusText }}</span>
+    <pre>{{ statusText }}</pre>
   </div>
   <div class="buttons">
     <button mat-raised-button color="primary" (click)="getQueries()">
-      Get Queries
+      Update Query List
     </button>
   </div>
 </mat-expansion-panel>
