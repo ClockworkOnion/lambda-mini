@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { StatusComponent } from './panels/status/status.component';
 import { StreamlistComponent } from './panels/streamlist/streamlist.component';
 import { CreateStreamComponent } from './panels/create-stream/create-stream.component';
@@ -60,6 +61,7 @@ import { EditQueryTextComponent } from './dialogs/edit-query-text/edit-query-tex
     MatInputModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatDividerModule,
     MatRadioModule,
     MatFormFieldModule,
     MatStepperModule,
