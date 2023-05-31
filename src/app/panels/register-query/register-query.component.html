@@ -9,22 +9,26 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
 
-  <div class="container">
+  <!-- <div class="container"> -->
+  <div>
     <mat-form-field appearance="outline">
       <mat-label>Query ID</mat-label>
       <input matInput #input placeholder="eg. Query1" [(ngModel)]="queryId" />
     </mat-form-field>
+  </div>
 
-    <mat-form-field appearance="outline">
+  <div>
+    <mat-form-field appearance="outline" class="wide">
       <mat-label>Query</mat-label>
-      <input
+      <textarea
         matInput
         #input
         placeholder="the input query"
         [(ngModel)]="query"
-      />
+      ></textarea>
     </mat-form-field>
   </div>
+  <!-- </div> -->
 
   <div class="buttons">
     <button

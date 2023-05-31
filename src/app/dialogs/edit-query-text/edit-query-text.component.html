@@ -1,0 +1,16 @@
+<p>
+  Edit the query and confirm (Note: Internally this will delete the existing
+  query and register a new query with the updated query
+</p>
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Query Text</mat-label>
+    <textarea
+      matInput
+      #input
+      placeholder="eg. Query1"
+      [(ngModel)]="queryData.query"
+    ></textarea>
+  </mat-form-field>
+</div>
+<button mat-raised-button (click)="onConfirm()">Confirm</button>

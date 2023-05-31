@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { queryInterface } from './interfaces/query';
 
 @Injectable({
   providedIn: 'root',
@@ -168,6 +169,15 @@ export class ApiService {
       return JSON.stringify(response?.body, null, 2) || 'Failed to evaluate';
     } catch (error) {}
     return 'Failed to evaluate';
+  }
+
+  static JSONtoQueryInterface(json: string): queryInterface[] {
+    const jsonObject = JSON.parse(json);
+    const queries: queryInterface[] = Object.keys(jsonObject).map((key) => ({
+      queryId: key,
+      query: jsonObject[key],
+    }));
+    return queries;
   }
 
   //#endregion

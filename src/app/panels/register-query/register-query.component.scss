@@ -6,3 +6,8 @@
 mat-form-field {
   margin-right: 0.5rem;
 }
+
+// this class fills the full width available
+.wide {
+  min-width: 40rem;
+}
