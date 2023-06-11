@@ -19,10 +19,15 @@ export class RegisterQueryComponent {
     //   "queryId": "string2",
     //   "query": "strings"
     // }
-    const body = `{"queryId": "${id}","query": "${querytext}"}`;
+    const noLineBreaks = this.removeLineBreaks(querytext);
+    const body = `{"queryId": "${id}","query": "${noLineBreaks}"}`;
     console.log(body);
     this.apiService.registerQuery(body).then((status) => {
       this.statusText = 'Status: ' + status;
     });
+  }
+
+  removeLineBreaks(text: string): string {
+    return text.replace(/(\r\n|\n|\r)/gm, '');
   }
 }
