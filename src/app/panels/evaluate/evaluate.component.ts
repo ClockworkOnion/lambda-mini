@@ -24,6 +24,10 @@ export class EvaluateComponent {
 
   constructor(private apiService: ApiService) {}
 
+  ngOnInit(): void {
+    this.getQueries();
+  }
+
   getQueries(): void {
     this.apiService.getQueries().then((queries) => {
       this.queries = this.JSONtoQueryInterface(queries);

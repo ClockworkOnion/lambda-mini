@@ -1,18 +1,4 @@
-<mat-expansion-panel
-  (opened)="panelOpenState = true; getQueries()"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header>
-    <mat-panel-title> View / Delete Registered Queries </mat-panel-title>
-    <mat-panel-description>
-      {{
-        panelOpenState
-          ? ""
-          : "View or delete registered queries inside ChronicleDB"
-      }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
+<mat-card>
   <div *ngFor="let entry of queryList; let i = index">
     <div class="queryListContainer">
       <div class="queryIdEntry">{{ entry.queryId }}</div>
@@ -52,4 +38,4 @@
       Update Query List
     </button>
   </div>
-</mat-expansion-panel>
+</mat-card>

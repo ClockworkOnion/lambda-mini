@@ -5,26 +5,44 @@
   src="assets/lambda_icon.png"
   alt="Lambda Icon"
 />
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>LAMBDA-MINI</mat-card-title>
-    <mat-card-subtitle
-      >Create sample streams, entries and queries inside Lambda
-      Engine</mat-card-subtitle
-    >
-  </mat-card-header>
 
-  <div class="card-content">
-    <app-status></app-status>
-    <h2>Streams</h2>
-    <app-streamlist class="panel"></app-streamlist>
-    <app-create-stream class="panel"></app-create-stream>
-    <app-delete-stream class="panel"></app-delete-stream>
-    <h2>Queries</h2>
-    <!-- <app-view-queries class="panel"></app-view-queries> -->
-    <app-register-query class="panel"></app-register-query>
-    <app-edit-query class="panel"></app-edit-query>
-    <app-get-schema class="panel"></app-get-schema>
-    <app-evaluate class="panel"></app-evaluate>
+<div class="mainGrid">
+  <mat-card>
+    <h3>Streams</h3>
+    <div><a [routerLink]="['home']">Check Streams</a></div>
+    <div><a [routerLink]="['createstream']">Create Stream</a></div>
+    <div><a [routerLink]="['deletestream']">Delete Stream</a></div>
+    <h3>Queries</h3>
+    <div><a [routerLink]="['registerquery']">Register</a></div>
+    <div><a [routerLink]="['editquery']">Edit queries</a></div>
+    <div><a [routerLink]="['getschema']">Get Schema</a></div>
+    <div><a [routerLink]="['evaluate']"> Evaluate</a></div>
+  </mat-card>
+
+  <div>
+    <router-outlet></router-outlet>
   </div>
-</mat-card>
+
+  <!-- <mat-card>
+    <mat-card-header>
+      <mat-card-title>LAMBDA-MINI</mat-card-title>
+      <mat-card-subtitle
+        >Create sample streams, entries and queries inside Lambda
+        Engine</mat-card-subtitle
+      >
+    </mat-card-header>
+
+    <div class="card-content">
+      <app-status></app-status>
+      <h2>Streams</h2>
+      <app-streamlist class="panel"></app-streamlist>
+      <app-create-stream class="panel"></app-create-stream>
+      <app-delete-stream class="panel"></app-delete-stream>
+      <h2>Queries</h2>
+      <app-register-query class="panel"></app-register-query>
+      <app-edit-query class="panel"></app-edit-query>
+      <app-get-schema class="panel"></app-get-schema>
+      <app-evaluate class="panel"></app-evaluate>
+    </div>
+  </mat-card> -->
+</div>

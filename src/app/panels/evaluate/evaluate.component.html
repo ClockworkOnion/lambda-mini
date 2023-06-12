@@ -1,15 +1,6 @@
-<mat-expansion-panel
-  (opened)="panelOpenState = true; getQueries()"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header>
-    <mat-panel-title> Evaluate Queries </mat-panel-title>
-    <mat-panel-description>
-      {{ panelOpenState ? "" : "Evaluate existing queries inside ChronicleDB" }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
-  <p>Select a query to evaluate</p>
+<mat-card>
+  <h2>Evaluate queries</h2>
+  <p>1. Select a query to evaluate</p>
   <mat-radio-group
     aria-labelledby="query-radio-group-label"
     class="query-radio-group"
@@ -24,7 +15,7 @@
     </mat-radio-button>
   </mat-radio-group>
 
-  <p>Select a time range to evaluate the query on:</p>
+  <p>2. Select a time range to evaluate the query on</p>
   <mat-form-field class="example-full-width">
     <mat-label>Starting timestamp</mat-label>
     <input matInput placeholder="eg. 0" [(ngModel)]="startTimestamp" />
@@ -34,6 +25,8 @@
     <mat-label>Ending timestamp</mat-label>
     <input matInput placeholder="eg. 10" [(ngModel)]="endTimestamp" />
   </mat-form-field>
+
+  <p>3. Evaluate the query</p>
 
   <div class="statusText">
     <pre>
@@ -51,4 +44,4 @@
       Update Query List
     </button>
   </div>
-</mat-expansion-panel>
+</mat-card>

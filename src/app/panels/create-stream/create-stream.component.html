@@ -1,14 +1,5 @@
-<mat-expansion-panel
-  (opened)="panelOpenState = true"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header>
-    <mat-panel-title> Create Streams in ChronicleDB </mat-panel-title>
-    <mat-panel-description>
-      {{ panelOpenState ? "" : "Create Streams in ChronicleDB" }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
+<mat-card>
+  <h2>Create Streams</h2>
   <mat-form-field appearance="outline">
     <mat-label>Stream Name</mat-label>
     <input
@@ -53,4 +44,4 @@
   <div>
     <span class="statusText">{{ statusText }}</span>
   </div>
-</mat-expansion-panel>
+</mat-card>

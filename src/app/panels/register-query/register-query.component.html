@@ -1,15 +1,10 @@
-<mat-expansion-panel
-  (opened)="panelOpenState = true"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header>
-    <mat-panel-title> Register new query </mat-panel-title>
-    <mat-panel-description>
-      {{ panelOpenState ? "" : "Register a new query inside ChronicleDB" }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
-  <!-- <div class="container"> -->
+<mat-card>
+  <h2>Register a query</h2>
+  <p>
+    Enter the query id and the query itself into the fields below. Please note
+    that the query won't be checked for validity. An invalid query can be
+    registered, but will fail to evaluate.
+  </p>
   <div>
     <mat-form-field appearance="outline">
       <mat-label>Query ID</mat-label>
@@ -41,5 +36,5 @@
   </div>
   <div>
     <span class="statusText">{{ statusText }}</span>
-  </div>
-</mat-expansion-panel>
+  </div> </mat-card
+><!-- <div class="container"> -->

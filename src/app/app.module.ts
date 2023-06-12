@@ -35,6 +35,9 @@ import { ConfirmDeleteComponent } from './dialogs/confirm-delete/confirm-delete.
 import { DuplicateQueryComponent } from './dialogs/duplicate-query/duplicate-query.component';
 import { EditQueryTextComponent } from './dialogs/edit-query-text/edit-query-text.component';
 
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +72,7 @@ import { EditQueryTextComponent } from './dialogs/edit-query-text/edit-query-tex
     MatSelectModule,
     MatCardModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent],

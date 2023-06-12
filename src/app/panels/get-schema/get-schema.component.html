@@ -1,14 +1,9 @@
-<mat-expansion-panel
-  (opened)="panelOpenState = true"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header>
-    <mat-panel-title> Get Schema for a query </mat-panel-title>
-    <mat-panel-description>
-      {{ panelOpenState ? "" : "Compute the output schema of a given query" }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
+<mat-card>
+  <h2>Get schema for a query</h2>
+  <p>
+    Please directly enter the query into the field below. If it's a valid query,
+    the output schema will be displayed.
+  </p>
   <div class="queryInput">
     <mat-form-field>
       <mat-label>Enter query here</mat-label>
@@ -22,8 +17,8 @@
   </div>
 
   <div class="statusText">
-    <pre>
-    {{ statusText }}
+    <pre
+      >{{ statusText }}
 </pre
     >
   </div>
@@ -32,4 +27,4 @@
       Get Schema
     </button>
   </div>
-</mat-expansion-panel>
+</mat-card>

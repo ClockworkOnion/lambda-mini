@@ -1,13 +1,6 @@
-<mat-expansion-panel
-  (opened)="panelOpenState = true"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header>
-    <mat-panel-title> Delete Streams from ChronicleDB </mat-panel-title>
-    <mat-panel-description>
-      {{ panelOpenState ? "" : "Delete Streams from ChronicleDB" }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
+<mat-card>
+  <h2>Delete Streams</h2>
+  <p>Enter the name of the stream you want to delete.</p>
 
   <mat-form-field appearance="outline">
     <mat-label>Stream Name</mat-label>
@@ -32,4 +25,4 @@
   <div>
     <span class="statusText">{{ statusText }}</span>
   </div>
-</mat-expansion-panel>
+</mat-card>

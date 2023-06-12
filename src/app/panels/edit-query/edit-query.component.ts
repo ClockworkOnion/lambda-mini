@@ -18,6 +18,10 @@ export class EditQueryComponent {
 
   constructor(private apiService: ApiService, private dialog: MatDialog) {}
 
+  ngOnInit(): void {
+    this.getQueries();
+  }
+
   checkValue(): void {}
 
   getQueries(): void {

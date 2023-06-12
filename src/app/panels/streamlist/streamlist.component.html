@@ -1,21 +1,8 @@
-<mat-expansion-panel
-  (opened)="panelOpenState = true"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header>
-    <mat-panel-title> Get ChronicleDB Streams </mat-panel-title>
-    <mat-panel-description>
-      {{
-        panelOpenState
-          ? ""
-          : "Get the names of all existing streams from ChronicleDB."
-      }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
+<mat-card>
   <button mat-raised-button color="primary" (click)="getStreams()">
     Get Streams
   </button>
   <div class="streamsList">
     {{ streams | json }}
   </div>
-</mat-expansion-panel>
+</mat-card>
