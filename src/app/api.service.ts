@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { queryInterface } from './interfaces/query';
+import { streamProperty } from './interfaces/streamProperty';
 
 @Injectable({
   providedIn: 'root',
@@ -54,6 +55,20 @@ export class ApiService {
     } catch (error) {
       console.error(error);
       return 'Failed to get streams';
+    }
+  }
+
+  public async getStreamSchema(streamName: string): Promise<string> {
+    try {
+      const response = await this.http
+        .get('/api/chronicledb/streams/' + streamName, { observe: 'response' })
+        .toPromise();
+      return (
+        JSON.stringify(response?.body, null, 2) || 'Failed to get stream schema'
+      );
+    } catch (error) {
+      console.error(error);
+      return 'Failed to get stream schema';
     }
   }
 
@@ -178,6 +193,15 @@ export class ApiService {
       query: jsonObject[key],
     }));
     return queries;
+  }
+
+  static JSONtoStreamInterface(json: string): streamProperty[] {
+    const jsonObject = JSON.parse(json);
+    const streams: streamProperty[] = Object.keys(jsonObject).map((key) => ({
+      name: key,
+      type: jsonObject[key],
+    }));
+    return streams;
   }
 
   //#endregion

@@ -1,8 +1,26 @@
 <mat-card>
+  <div *ngFor="let stream of streamList; let i = index">
+    <div class="streamListContainer">
+      <div class="streamEntry">
+        {{ stream }}
+      </div>
+
+      <button mat-raised-button color="primary" (click)="getSchema(stream)">
+        Get Schema
+      </button>
+      <button mat-raised-button color="primary" (click)="deleteStream(stream)">
+        Delete
+      </button>
+    </div>
+    <div>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
   <button mat-raised-button color="primary" (click)="getStreams()">
-    Get Streams
+    Refresh Streams
   </button>
-  <div class="streamsList">
-    {{ streams | json }}
+
+  <div class="statusText">
+    <pre>{{ streams }}</pre>
   </div>
 </mat-card>

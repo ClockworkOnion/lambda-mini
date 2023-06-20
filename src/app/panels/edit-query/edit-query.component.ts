@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeleteComponent } from 'src/app/dialogs/confirm-delete/confirm-delete.component';
 import { DuplicateQueryComponent } from 'src/app/dialogs/duplicate-query/duplicate-query.component';
 import { EditQueryTextComponent } from 'src/app/dialogs/edit-query-text/edit-query-text.component';
+import { StatusTextService } from 'src/app/status-text.service';
 @Component({
   selector: 'app-edit-query',
   templateUrl: './edit-query.component.html',
@@ -16,7 +17,11 @@ export class EditQueryComponent {
   statusText = '';
   queries: queryInterface[] = [];
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) {}
+  constructor(
+    private apiService: ApiService,
+    private dialog: MatDialog,
+    private statusWindow: StatusTextService
+  ) {}
 
   ngOnInit(): void {
     this.getQueries();
@@ -47,6 +52,7 @@ export class EditQueryComponent {
   getSchema(query: string): void {
     this.apiService.getSchema(query).then((status) => {
       this.statusText = 'Response from ChronicleDB:\n' + status;
+      this.statusWindow.pushStatusMessage('Get Schema result:\n' + status);
     });
   }
 

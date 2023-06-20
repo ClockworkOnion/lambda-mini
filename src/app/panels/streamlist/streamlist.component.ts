@@ -9,13 +9,36 @@ import { ApiService } from '../../api.service';
 export class StreamlistComponent {
   panelOpenState = false;
   streams = 'Press button to check streams';
+  streamList: string[] = [];
 
   constructor(private lambdaApi: ApiService) {}
+
+  ngOnInit(): void {
+    this.getStreams();
+  }
 
   getStreams(): void {
     console.log('jepc streams:');
     this.lambdaApi.getStreamNames().then((response) => {
+      this.streamList = this.parseStreamsList(response);
       this.streams = response;
+    });
+  }
+
+  parseStreamsList(streamString: string): string[] {
+    return streamString.split(',');
+  }
+
+  getSchema(stream: string): void {
+    this.lambdaApi.getStreamSchema(stream).then((response) => {
+      this.streams = response;
+    });
+  }
+
+  deleteStream(stream: string): void {
+    this.lambdaApi.deleteStream(stream).then((response) => {
+      this.streams = response;
+      this.getStreams();
     });
   }
 }
