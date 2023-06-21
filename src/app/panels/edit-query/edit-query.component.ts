@@ -51,7 +51,7 @@ export class EditQueryComponent {
 
   getSchema(query: string): void {
     this.apiService.getSchema(query).then((status) => {
-      this.statusText = 'Response from ChronicleDB:\n' + status;
+      this.statusText = 'Response from ChronicleDB:\n' + status; // TODO remove if central status window is used
       this.statusWindow.pushStatusMessage('Get Schema result:\n' + status);
     });
   }

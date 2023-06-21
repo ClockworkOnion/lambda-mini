@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
+import { StatusTextService } from 'src/app/status-text.service';
 
 @Component({
   selector: 'app-streamlist',
@@ -11,17 +12,20 @@ export class StreamlistComponent {
   streams = 'Press button to check streams';
   streamList: string[] = [];
 
-  constructor(private lambdaApi: ApiService) {}
+  constructor(
+    private lambdaApi: ApiService,
+    private statusWindow: StatusTextService
+  ) {}
 
   ngOnInit(): void {
     this.getStreams();
   }
 
   getStreams(): void {
-    console.log('jepc streams:');
     this.lambdaApi.getStreamNames().then((response) => {
       this.streamList = this.parseStreamsList(response);
       this.streams = response;
+      this.statusWindow.pushStatusMessage('Get Streams result:\n' + response);
     });
   }
 
@@ -31,7 +35,8 @@ export class StreamlistComponent {
 
   getSchema(stream: string): void {
     this.lambdaApi.getStreamSchema(stream).then((response) => {
-      this.streams = response;
+      // this.streams = response;
+      this.statusWindow.pushStatusMessage('Get Schema result:\n' + response);
     });
   }
 

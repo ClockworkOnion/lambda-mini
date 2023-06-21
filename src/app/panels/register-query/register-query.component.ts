@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
+import { StatusTextService } from 'src/app/status-text.service';
 
 @Component({
   selector: 'app-register-query',
@@ -12,7 +13,10 @@ export class RegisterQueryComponent {
   queryId = '';
   query = '';
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private statusWindow: StatusTextService
+  ) {}
 
   registerQuery(id: string, querytext: string): void {
     // {
@@ -24,6 +28,7 @@ export class RegisterQueryComponent {
     console.log(body);
     this.apiService.registerQuery(body).then((status) => {
       this.statusText = 'Status: ' + status;
+      this.statusWindow.pushStatusMessage('Register Query result:\n' + status);
     });
   }
 

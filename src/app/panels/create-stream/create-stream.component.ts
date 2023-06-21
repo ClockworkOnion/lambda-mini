@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { streamProperty } from '../../interfaces/streamProperty';
 import { ApiService } from '../../api.service';
+import { StatusTextService } from 'src/app/status-text.service';
 
 @Component({
   selector: 'app-create-stream',
@@ -13,7 +14,10 @@ export class CreateStreamComponent {
   statusText: string = '';
   properties: streamProperty[] = [];
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private statusWindow: StatusTextService
+  ) {
     this.properties.push({ name: '', type: '' });
   }
 
@@ -24,6 +28,7 @@ export class CreateStreamComponent {
     const JSONstring = '{' + JSONname + ', "schema":' + JSONproperties + '}';
     this.apiService.createStream(JSONstring).then((status) => {
       this.statusText = 'Status: ' + status;
+      this.statusWindow.pushStatusMessage('Create Stream result:\n' + status);
     });
   }
 

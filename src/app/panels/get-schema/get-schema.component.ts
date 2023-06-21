@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
+import { StatusTextService } from 'src/app/status-text.service';
 
 @Component({
   selector: 'app-get-schema',
@@ -11,11 +12,15 @@ export class GetSchemaComponent {
   statusText = '';
   query = '';
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private statusWindow: StatusTextService
+  ) {}
 
   getSchema(): void {
     this.apiService.getSchema(this.query).then((status) => {
       this.statusText = 'Status: ' + status;
+      this.statusWindow.pushStatusMessage('Get Schema result:\n' + status);
     });
   }
 }
