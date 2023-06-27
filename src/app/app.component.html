@@ -9,14 +9,31 @@
 <div class="mainGrid">
   <mat-card>
     <h3>Streams</h3>
-    <div><a [routerLink]="['home']">Check Streams</a></div>
-    <div><a [routerLink]="['createstream']">Create Stream</a></div>
-    <div><a [routerLink]="['deletestream']">Delete Stream</a></div>
+    <div routerLinkActive="activeLink">
+      <a [routerLink]="['streamlist']">Check Streams</a>
+    </div>
+    <div routerLinkActive="activeLink">
+      <a [routerLink]="['createstream']">Create Stream</a>
+    </div>
+    <div routerLinkActive="activeLink">
+      <a [routerLink]="['deletestream']">Delete Stream</a>
+    </div>
+    <div routerLinkActive="activeLink">
+      <a [routerLink]="['insertelements']">Insert Elements</a>
+    </div>
     <h3>Queries</h3>
-    <div><a [routerLink]="['registerquery']">Register</a></div>
-    <div><a [routerLink]="['editquery']">Edit queries</a></div>
-    <div><a [routerLink]="['getschema']">Get Schema</a></div>
-    <div><a [routerLink]="['evaluate']"> Evaluate</a></div>
+    <div routerLinkActive="activeLink">
+      <a [routerLink]="['registerquery']">Register</a>
+    </div>
+    <div routerLinkActive="activeLink">
+      <a [routerLink]="['editquery']">Edit queries</a>
+    </div>
+    <div routerLinkActive="activeLink">
+      <a [routerLink]="['getschema']">Get Schema</a>
+    </div>
+    <div routerLinkActive="activeLink">
+      <a [routerLink]="['evaluate']"> Evaluate</a>
+    </div>
   </mat-card>
 
   <div>

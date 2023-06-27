@@ -1,5 +1,9 @@
 <mat-card>
   <h2>Edit, duplicate or delete existing queries</h2>
+  <div class="queryListHeader">
+    <div class="tableHead">Query ID</div>
+    <div class="tableHead">Query Text</div>
+  </div>
   <div *ngFor="let entry of queries; let i = index">
     <div class="queryListContainer">
       <div class="queryIdEntry">{{ entry.queryId }}</div>

@@ -103,6 +103,18 @@ export class ApiService {
     }
   }
 
+  public async insertElements(body: string): Promise<string> {
+    try {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const response = await this.http
+        .post('/api/chronicledb/insert', body, { headers, observe: 'response' })
+        .toPromise();
+      return response?.status.toString() || 'Failed to insert elements';
+    } catch (error) {
+      return 'Failed to insert elements';
+    }
+  }
+
   //#endregion
 
   //#region Queries
@@ -171,8 +183,10 @@ export class ApiService {
     startTimestamp: number,
     endTimestamp: number
   ): Promise<string> {
-    const body: string = '';
-    const urlPostfix: string = `${query}?startTime=${startTimestamp}&endTime=${endTimestamp}`;
+    // const urlPostfix: string = `${query}?startTime=${startTimestamp}&endTime=${endTimestamp}`;
+    const body: string = `{"startTime":${startTimestamp},"endTime":${endTimestamp}}}`;
+    console.log(body);
+    const urlPostfix: string = `${query}`;
     try {
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       const response = await this.http

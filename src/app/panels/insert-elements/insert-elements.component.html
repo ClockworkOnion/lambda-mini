@@ -1,0 +1,32 @@
+<mat-card>
+  <h2>Insert Elements</h2>
+  <p>Enter JSON formatted data for the element you want to insert below.</p>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Stream Name</mat-label>
+    <textarea
+      rows="5"
+      matInput
+      #input
+      maxlength="2000"
+      placeholder='eg. { "name": "stream1", "events": [ { ...'
+      [(ngModel)]="jsonData"
+    ></textarea>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="getHelp()">
+      Print Help
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="insertElements(jsonData)"
+    >
+      Insert Element
+    </button>
+  </div>
+  <!-- <div>
+    <span class="statusText">{{ statusText }}</span>
+  </div> -->
+</mat-card>

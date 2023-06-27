@@ -8,10 +8,12 @@ import { StreamlistComponent } from './panels/streamlist/streamlist.component';
 import { CreateStreamComponent } from './panels/create-stream/create-stream.component';
 import { DeleteStreamComponent } from './panels/delete-stream/delete-stream.component';
 import { EvaluateComponent } from './panels/evaluate/evaluate.component';
+import { InsertElementsComponent } from './panels/insert-elements/insert-elements.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'streamlist', pathMatch: 'full' },
   { path: 'streamlist', component: StreamlistComponent },
+  { path: 'insertelements', component: InsertElementsComponent },
   { path: 'registerquery', component: RegisterQueryComponent },
   { path: 'getschema', component: GetSchemaComponent },
   { path: 'editquery', component: EditQueryComponent },
