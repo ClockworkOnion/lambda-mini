@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpResponse,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { queryInterface } from './interfaces/query';
 import { streamProperty } from './interfaces/streamProperty';
@@ -85,7 +90,8 @@ export class ApiService {
       console.log(response?.headers);
       return response?.status.toString() || 'Failed to create stream';
     } catch (error) {
-      return 'Failed to create stream';
+      const errorResponse: HttpErrorResponse = error as HttpErrorResponse;
+      return errorResponse.status.toString();
     }
   }
 
@@ -99,7 +105,8 @@ export class ApiService {
       console.log(response?.headers);
       return response?.status.toString() || 'Failed to delete stream';
     } catch (error) {
-      return 'Failed to delete stream';
+      const errorResponse: HttpErrorResponse = error as HttpErrorResponse;
+      return errorResponse.status.toString();
     }
   }
 
@@ -109,9 +116,11 @@ export class ApiService {
       const response = await this.http
         .post('/api/chronicledb/insert', body, { headers, observe: 'response' })
         .toPromise();
+      console.log(response?.status);
       return response?.status.toString() || 'Failed to insert elements';
     } catch (error) {
-      return 'Failed to insert elements';
+      const errorResponse: HttpErrorResponse = error as HttpErrorResponse;
+      return errorResponse.status.toString();
     }
   }
 
@@ -145,7 +154,8 @@ export class ApiService {
         .toPromise();
       return response?.status.toString() || 'Failed to register query';
     } catch (error) {
-      return 'Failed to register query';
+      const errorResponse: HttpErrorResponse = error as HttpErrorResponse;
+      return errorResponse.status.toString();
     }
   }
 

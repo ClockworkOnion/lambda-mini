@@ -92,11 +92,12 @@ export class EditQueryComponent {
       const body = `{"queryId": "${queryId}","query": "${newQuery}"}`;
       this.apiService.deleteQuery(queryId).then((deleteStatus) => {
         this.apiService.registerQuery(body).then((registerStatus) => {
-          this.statusText =
+          this.statusWindow.pushStatusMessage(
             'Status (delete): ' +
-            deleteStatus +
-            '\nStatus (register): ' +
-            registerStatus;
+              deleteStatus +
+              '\nStatus (register): ' +
+              registerStatus
+          );
           this.getQueries();
         });
       });

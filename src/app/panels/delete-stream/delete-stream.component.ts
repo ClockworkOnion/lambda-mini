@@ -19,8 +19,28 @@ export class DeleteStreamComponent {
 
   deleteStream(streamName: string): void {
     this.apiService.deleteStream(streamName).then((status) => {
-      this.statusText = 'Status: ' + status;
-      this.statusWindow.pushStatusMessage('Delete Stream result:\n' + status);
+      switch (status) {
+        case '200':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n200 - Stream successfully deleted'
+          );
+          break;
+        case '400':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n400 - Bad Request, check stream name'
+          );
+          break;
+        case '404':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n404 - Stream not found'
+          );
+          break;
+        default:
+          this.statusWindow.pushStatusMessage(
+            'Unknown response from ChronicleDB'
+          );
+          break;
+      }
     });
   }
 }

@@ -27,8 +27,23 @@ export class RegisterQueryComponent {
     const body = `{"queryId": "${id}","query": "${noLineBreaks}"}`;
     console.log(body);
     this.apiService.registerQuery(body).then((status) => {
-      this.statusText = 'Status: ' + status;
-      this.statusWindow.pushStatusMessage('Register Query result:\n' + status);
+      switch (status) {
+        case '200':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n200 - Query successfully registered'
+          );
+          break;
+        case '400':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n400 - Bad request; Check JSON format'
+          );
+          break;
+        case '409':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n409 - Invalid query, or query already exists'
+          );
+          break;
+      }
     });
   }
 

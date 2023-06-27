@@ -17,7 +17,22 @@ export class InsertElementsComponent {
 
   insertElements(jsonString: string) {
     this.apiService.insertElements(jsonString).then((status) => {
-      this.textPrint.pushStatusMessage('Response from ChronicleDB: ' + status);
+      console.log(status);
+      switch (status) {
+        case '200':
+          this.textPrint.pushStatusMessage(
+            'Response from ChronicleDB:\n200 - Elements successfully added'
+          );
+          break;
+        case '400':
+          this.textPrint.pushStatusMessage(
+            'Response from ChronicleDB:\n400 - Bad Request, check JSON format'
+          );
+          break;
+        default:
+          this.textPrint.pushStatusMessage('Unknown response from ChronicleDB');
+          break;
+      }
     });
   }
 

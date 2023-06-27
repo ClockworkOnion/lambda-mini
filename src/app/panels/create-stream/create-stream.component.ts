@@ -27,8 +27,23 @@ export class CreateStreamComponent {
     const JSONname = '"name": "' + this.streamName + '"';
     const JSONstring = '{' + JSONname + ', "schema":' + JSONproperties + '}';
     this.apiService.createStream(JSONstring).then((status) => {
-      this.statusText = 'Status: ' + status;
-      this.statusWindow.pushStatusMessage('Create Stream result:\n' + status);
+      switch (status) {
+        case '201':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n201 - Stream successfully created'
+          );
+          break;
+        case '400':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n400 - Bad Request, check JSON format'
+          );
+          break;
+        case '409':
+          this.statusWindow.pushStatusMessage(
+            'Response from ChronicleDB:\n409 - The stream name already exists'
+          );
+          break;
+      }
     });
   }
 
