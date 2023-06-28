@@ -38,6 +38,7 @@ import { EditQueryTextComponent } from './dialogs/edit-query-text/edit-query-tex
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { InsertElementsComponent } from './panels/insert-elements/insert-elements.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { InsertElementsComponent } from './panels/insert-elements/insert-element
     DuplicateQueryComponent,
     EditQueryTextComponent,
     InsertElementsComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

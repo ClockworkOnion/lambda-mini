@@ -9,6 +9,7 @@ import { CreateStreamComponent } from './panels/create-stream/create-stream.comp
 import { DeleteStreamComponent } from './panels/delete-stream/delete-stream.component';
 import { EvaluateComponent } from './panels/evaluate/evaluate.component';
 import { InsertElementsComponent } from './panels/insert-elements/insert-elements.component';
+import { SettingsComponent } from './settings/settings.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'streamlist', pathMatch: 'full' },
@@ -20,5 +21,6 @@ export const routes: Routes = [
   { path: 'createstream', component: CreateStreamComponent },
   { path: 'deletestream', component: DeleteStreamComponent },
   { path: 'evaluate', component: EvaluateComponent },
+  { path: 'settings', component: SettingsComponent },
   { path: '**', redirectTo: 'streamlist' },
 ];
