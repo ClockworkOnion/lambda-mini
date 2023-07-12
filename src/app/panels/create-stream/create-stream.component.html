@@ -27,8 +27,14 @@
       <mat-label>Property Type</mat-label>
       <mat-select [(ngModel)]="property.type">
         <mat-option value="String">String</mat-option>
-        <!-- <mat-option value="Ingeger">Integer</mat-option> Integer not allowed (spelling?) -->
+        <mat-option value="Boolean">Boolean</mat-option>
+        <mat-option value="Integer">Integer</mat-option>
+        <mat-option value="Short">Short</mat-option>
+        <mat-option value="Byte">Byte</mat-option>
+        <mat-option value="Long">Long</mat-option>
         <mat-option value="Float">Float</mat-option>
+        <mat-option value="Double">Double</mat-option>
+        <mat-option value="Geometry">Geometry</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
