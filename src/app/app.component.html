@@ -1,72 +1,40 @@
 <br />
-<!-- <img
-  class="logo"
-  mat-card-image
-  src="assets/lambda_icon.png"
-  alt="Lambda Icon"
-/> -->
-
 <div class="mainGrid">
-  <mat-card>
-    <img class="logo" src="assets/lambda_icon.png" alt="Lambda Icon" />
-    <h3>Streams</h3>
-    <div routerLinkActive="activeLink">
-      <a [routerLink]="['streamlist']">Check Streams</a>
-    </div>
-    <div routerLinkActive="activeLink">
-      <a [routerLink]="['createstream']">Create Stream</a>
-    </div>
-    <div routerLinkActive="activeLink">
-      <a [routerLink]="['deletestream']">Delete Stream</a>
-    </div>
-    <div routerLinkActive="activeLink">
-      <a [routerLink]="['insertelements']">Insert Elements</a>
-    </div>
-    <h3>Queries</h3>
-    <div routerLinkActive="activeLink">
-      <a [routerLink]="['registerquery']">Register</a>
-    </div>
-    <div routerLinkActive="activeLink">
-      <a [routerLink]="['editquery']">Edit queries</a>
-    </div>
-    <div routerLinkActive="activeLink">
-      <a [routerLink]="['getschema']">Get Schema</a>
-    </div>
-    <div routerLinkActive="activeLink">
-      <a [routerLink]="['evaluate']"> Evaluate</a>
-    </div>
-  </mat-card>
-
-  <div>
-    <router-outlet></router-outlet>
+  <div id="sidePanel">
+    <mat-card>
+      <img class="logo" src="assets/lambda_icon.png" alt="Lambda Icon" />
+      <h3>Streams</h3>
+      <div routerLinkActive="activeLink">
+        <a [routerLink]="['streamlist']">Overview</a>
+      </div>
+      <div routerLinkActive="activeLink">
+        <a [routerLink]="['createstream']">Create Stream</a>
+      </div>
+      <div routerLinkActive="activeLink">
+        <a [routerLink]="['insertelements']">Insert Elements</a>
+      </div>
+      <h3>Queries</h3>
+      <div routerLinkActive="activeLink">
+        <a [routerLink]="['editquery']">Overview</a>
+      </div>
+      <div routerLinkActive="activeLink">
+        <a [routerLink]="['registerquery']">Register Queries</a>
+      </div>
+      <div routerLinkActive="activeLink">
+        <a [routerLink]="['getschema']">Get Schema</a>
+      </div>
+      <div routerLinkActive="activeLink">
+        <a [routerLink]="['evaluate']">Evaluate</a>
+      </div>
+    </mat-card>
   </div>
 
-  <!-- <mat-card>
-    <mat-card-header>
-      <mat-card-title>LAMBDA-MINI</mat-card-title>
-      <mat-card-subtitle
-        >Create sample streams, entries and queries inside Lambda
-        Engine</mat-card-subtitle
-      >
-    </mat-card-header>
-
-    <div class="card-content">
-      <app-status></app-status>
-      <h2>Streams</h2>
-      <app-streamlist class="panel"></app-streamlist>
-      <app-create-stream class="panel"></app-create-stream>
-      <app-delete-stream class="panel"></app-delete-stream>
-      <h2>Queries</h2>
-      <app-register-query class="panel"></app-register-query>
-      <app-edit-query class="panel"></app-edit-query>
-      <app-get-schema class="panel"></app-get-schema>
-      <app-evaluate class="panel"></app-evaluate>
+  <div>
+    <div>
+      <router-outlet></router-outlet>
     </div>
-  </mat-card> -->
-</div>
-<!-- <button mat-raised-button color="primary" (click)="addMsg()">
-  Add test message
-</button> -->
-<div class="statusTextWindow">
-  <pre>{{ statusText }}</pre>
+    <div class="statusTextWindow">
+      <pre>{{ statusText }}</pre>
+    </div>
+  </div>
 </div>

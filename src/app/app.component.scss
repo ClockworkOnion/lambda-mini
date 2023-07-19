@@ -21,6 +21,14 @@ mat-expansion-panel {
   margin-bottom: 2rem;
 }
 
+mat-card {
+  vertical-align: top;
+}
+
+#sidePanel {
+  width: 11rem;
+}
+
 button {
   margin-left: 0;
 }
@@ -38,7 +46,7 @@ h2 {
 // creates a horizontal css grid
 .mainGrid {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 6fr;
   grid-gap: 1rem;
   width: 60%;
   max-width: 100rem;
@@ -46,7 +54,7 @@ h2 {
 }
 
 .statusTextWindow {
-  width: 59%;
+  width: 99%;
   max-width: 100rem;
   max-height: 40rem;
   overflow-y: scroll;

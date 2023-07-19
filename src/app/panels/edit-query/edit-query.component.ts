@@ -90,25 +90,26 @@ export class EditQueryComponent {
         return;
       }
       const body = `{"queryId": "${queryId}","query": "${newQuery}"}`;
-      this.apiService.deleteQuery(queryId).then((deleteStatus) => {
-        this.apiService.registerQuery(body).then((registerStatus) => {
-          this.statusWindow.pushStatusMessage(
-            'Status (delete): ' +
-              deleteStatus +
-              '\nStatus (register): ' +
-              registerStatus
-          );
-          this.getQueries();
+
+      // Check for validity of the query first, by trying to get the schema
+      this.apiService.getSchema(newQuery).then((status) => {
+        if (status.startsWith('Failed')) {
+          this.statusWindow.pushStatusMessage("Query is not valid, can't edit");
+          return;
+        }
+
+        this.apiService.deleteQuery(queryId).then((deleteStatus) => {
+          this.apiService.registerQuery(body).then((registerStatus) => {
+            this.statusWindow.pushStatusMessage(
+              'Status (delete): ' +
+                deleteStatus +
+                '\nStatus (register): ' +
+                registerStatus
+            );
+            this.getQueries();
+          });
         });
       });
     });
   }
-
-  // registerQuery(id: string, querytext: string): void {
-  //   const body = `{"queryId": "${id}","query": "${querytext}"}`;
-  //   console.log(body);
-  //   this.apiService.registerQuery(body).then((status) => {
-  //     this.statusText = 'Status: ' + status;
-  //   });
-  // }
 }

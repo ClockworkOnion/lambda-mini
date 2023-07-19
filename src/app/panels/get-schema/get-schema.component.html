@@ -5,14 +5,14 @@
     the output schema will be displayed.
   </p>
   <div class="queryInput">
-    <mat-form-field>
+    <mat-form-field appearance="outline" class="wide">
       <mat-label>Enter query here</mat-label>
-      <input
+      <textarea
         matInput
         #input
         placeholder="eg. 'select * from stream1'"
         [(ngModel)]="query"
-      />
+      ></textarea>
     </mat-form-field>
   </div>
 
