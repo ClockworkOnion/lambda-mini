@@ -16,6 +16,7 @@ export class EditQueryComponent {
   panelOpenState = false;
   statusText = '';
   queries: queryInterface[] = [];
+  errorMessage = 'No queries found. Check connection with ChronicleDB.';
 
   constructor(
     private apiService: ApiService,
@@ -31,6 +32,10 @@ export class EditQueryComponent {
 
   getQueries(): void {
     this.apiService.getQueries().then((queries) => {
+      this.errorMessage =
+        queries === '{}'
+          ? 'No queries present. Go to "Register Query" to register a new query.'
+          : 'Failed to get queries. Unexpected response from ChronicleDB.';
       this.queries = ApiService.JSONtoQueryInterface(queries);
     });
   }

@@ -1,63 +1,68 @@
 <mat-card>
   <h2>Edit, duplicate or delete existing queries</h2>
-  <div class="queryListHeader">
-    <div class="tableHead">Query ID</div>
-    <div class="tableHead">Query Text</div>
+  <div *ngIf="queries.length == 0">
+    {{ errorMessage }}
   </div>
-  <div *ngFor="let entry of queries; let i = index">
-    <div class="queryListContainer">
-      <div class="queryIdEntry">{{ entry.queryId }}</div>
-      <div class="queryEntry">
-        {{ entry.query }}
-      </div>
+  <div *ngIf="queries.length != 0">
+    <div class="queryListHeader">
+      <div class="tableHead">Query ID</div>
+      <div class="tableHead">Query Text</div>
     </div>
-
-    <div class="bottomContainer">
-      <div>
-        <button
-          class="queryControl"
-          mat-raised-button
-          color="primary"
-          (click)="deleteQuery(entry.queryId)"
-        >
-          Delete
-        </button>
+    <div *ngFor="let entry of queries; let i = index">
+      <div class="queryListContainer">
+        <div class="queryIdEntry">{{ entry.queryId }}</div>
+        <div class="queryEntry">
+          {{ entry.query }}
+        </div>
       </div>
 
-      <div>
-        <button
-          class="queryControl"
-          mat-raised-button
-          color="primary"
-          (click)="getSchema(entry.query)"
-        >
-          Get Schema
-        </button>
-      </div>
+      <div class="bottomContainer">
+        <div>
+          <button
+            class="queryControl"
+            mat-raised-button
+            color="primary"
+            (click)="deleteQuery(entry.queryId)"
+          >
+            Delete
+          </button>
+        </div>
 
-      <div>
-        <button
-          class="queryControl"
-          mat-raised-button
-          color="primary"
-          (click)="onDuplicate(entry.query)"
-        >
-          Duplicate
-        </button>
-      </div>
+        <div>
+          <button
+            class="queryControl"
+            mat-raised-button
+            color="primary"
+            (click)="getSchema(entry.query)"
+          >
+            Get Schema
+          </button>
+        </div>
 
-      <div>
-        <button
-          class="queryControl"
-          mat-raised-button
-          color="primary"
-          (click)="onEdit(entry.queryId, entry.query)"
-        >
-          Edit Query
-        </button>
+        <div>
+          <button
+            class="queryControl"
+            mat-raised-button
+            color="primary"
+            (click)="onDuplicate(entry.query)"
+          >
+            Duplicate
+          </button>
+        </div>
+
+        <div>
+          <button
+            class="queryControl"
+            mat-raised-button
+            color="primary"
+            (click)="onEdit(entry.queryId, entry.query)"
+          >
+            Edit Query
+          </button>
+        </div>
       </div>
+      <mat-divider></mat-divider>
     </div>
-    <mat-divider></mat-divider>
   </div>
 
   <!-- <div class="statusText">

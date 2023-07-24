@@ -25,7 +25,6 @@ export class StreamlistComponent {
     this.lambdaApi.getStreamNames().then((response) => {
       this.streamList = this.parseStreamsList(response);
       this.streams = response;
-      this.statusWindow.pushStatusMessage('Get Streams result:\n' + response);
     });
   }
 

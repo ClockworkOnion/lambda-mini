@@ -4,7 +4,13 @@
   <div>
     <mat-form-field appearance="outline">
       <mat-label>Query ID</mat-label>
-      <input matInput #input placeholder="eg. Query1" [(ngModel)]="queryId" />
+      <input
+        matInput
+        #input
+        maxlength="32"
+        placeholder="eg. Query1"
+        [(ngModel)]="queryId"
+      />
     </mat-form-field>
   </div>
 

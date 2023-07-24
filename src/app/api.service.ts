@@ -40,6 +40,11 @@ export class ApiService {
         .toPromise();
       console.log(response?.headers);
 
+      let dbStatus: string =
+        response?.status === 200
+          ? 'ChronicleDB showed status OK (200).'
+          : 'ChronicleDB had a problem: Status code ' + response?.status + '.';
+
       // See if there's a body?
       if (response?.body === '') {
         // Response has an empty body
@@ -50,16 +55,14 @@ export class ApiService {
       } else {
         // Response has a non-empty body
         console.log('Response has a non-empty body');
+        console.log(response?.status);
       }
       console.log(response?.body);
 
-      return (
-        response?.body?.toString() ||
-        'Failed to get streams (or no streams present?)'
-      );
+      return response?.body?.toString() || dbStatus + '\nNo streams present.';
     } catch (error) {
       console.error(error);
-      return 'Failed to get streams';
+      return 'Unable to reach ChronicleDB';
     }
   }
 
@@ -137,6 +140,11 @@ export class ApiService {
           observe: 'response',
         })
         .toPromise();
+
+      if (JSON.stringify(response?.body) === '{}') {
+        console.log('Response has an empty body');
+      }
+
       return JSON.stringify(response?.body) || 'Failed to get queries';
     } catch (error) {
       return 'Failed to get queries';
