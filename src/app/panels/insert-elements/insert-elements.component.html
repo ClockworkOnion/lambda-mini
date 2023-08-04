@@ -1,6 +1,29 @@
 <mat-card>
   <h2>Insert Elements</h2>
-  <p>Enter JSON formatted data for the element you want to insert below.</p>
+
+  <!-- streams overview -->
+  <div class="tableHead">Stream Name</div>
+  <div *ngFor="let stream of streamList; let i = index">
+    <div class="streamListContainer">
+      <div class="streamEntry">
+        {{ stream }}
+      </div>
+
+      <button
+        class="listButton"
+        mat-raised-button
+        color="primary"
+        (click)="insertByUI(stream)"
+      >
+        Insert Elements
+      </button>
+    </div>
+    <div>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <p>Or enter JSON formatted data for the element you want to insert below.</p>
 
   <mat-form-field appearance="outline">
     <mat-label>Stream Name</mat-label>

@@ -1,0 +1,47 @@
+<div class="padding">
+  <p>
+    Please fill in values for each property of stream "{{ data.streamName }}"
+    below:
+  </p>
+  <mat-form-field appearance="outline">
+    <mat-label>Start Timestamp</mat-label>
+    <input
+      matInput
+      #input
+      maxlength="32"
+      placeholder="eg. 1"
+      [(ngModel)]="startTimestamp"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>End Timestamp</mat-label>
+    <input
+      matInput
+      #input
+      maxlength="32"
+      placeholder="eg. 2"
+      [(ngModel)]="endTimestamp"
+    />
+  </mat-form-field>
+  <div *ngFor="let property of streamProperties; let i = index">
+    <p class="propertyHeader">
+      Property: "{{ property.name }}", Type: "{{ property.type }}", Required:
+      <span *ngIf="property.properties.nullable; else isNullable">Yes</span>
+    </p>
+    <ng-template #isNullable>No</ng-template>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Value</mat-label>
+        <input
+          matInput
+          #input
+          maxlength="64"
+          placeholder="A valid {{ property.type }} value"
+          [(ngModel)]="property.value"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <button mat-stroked-button (click)="onConfirm()">Confirm</button>
+</div>

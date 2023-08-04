@@ -1,0 +1,11 @@
+.streamEntry {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+// override the global button style of floating right
+.listButton {
+  float: none;
+}

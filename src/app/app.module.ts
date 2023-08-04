@@ -39,6 +39,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { InsertElementsComponent } from './panels/insert-elements/insert-elements.component';
 import { SettingsComponent } from './settings/settings.component';
+import { InsertElementsDialogComponent } from './dialogs/insert-elements-dialog/insert-elements-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { SettingsComponent } from './settings/settings.component';
     EditQueryTextComponent,
     InsertElementsComponent,
     SettingsComponent,
+    InsertElementsDialogComponent,
   ],
   imports: [
     BrowserModule,
