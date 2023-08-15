@@ -30,7 +30,7 @@
       <span *ngIf="property.properties.nullable; else isNullable">Yes</span>
     </p>
     <ng-template #isNullable>No</ng-template>
-    <div>
+    <div *ngIf="property.type !== 'GEOMETRY'; else isGeometry">
       <mat-form-field appearance="outline">
         <mat-label>Value</mat-label>
         <input
@@ -42,6 +42,31 @@
         />
       </mat-form-field>
     </div>
+    <ng-template #isGeometry>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Coordinate X</mat-label>
+          <input
+            matInput
+            #input
+            maxlength="64"
+            placeholder="A valid {{ property.type }} value"
+            [(ngModel)]="property.coordinates[0]"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Coordinate Y</mat-label>
+          <input
+            matInput
+            #input
+            maxlength="64"
+            placeholder="A valid {{ property.type }} value"
+            [(ngModel)]="property.coordinates[1]"
+          />
+        </mat-form-field>
+      </div>
+    </ng-template>
   </div>
   <button mat-stroked-button (click)="onConfirm()">Confirm</button>
 </div>

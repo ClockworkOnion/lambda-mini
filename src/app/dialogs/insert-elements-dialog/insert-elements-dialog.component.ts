@@ -24,6 +24,9 @@ export class InsertElementsDialogComponent {
     this.apiService.getStreamSchema(this.data.streamName).then((schema) => {
       JSON.parse(schema).forEach((element: any) => {
         this.streamProperties.push(element);
+        if (element.type === 'GEOMETRY') {
+          element.coordinates = [0, 0];
+        }
       });
       console.log(this.streamProperties);
     });
@@ -33,19 +36,25 @@ export class InsertElementsDialogComponent {
     // Construct a JSON formatted string that can be passed into the insert method.
     let stringArray: string[] = [];
     stringArray.push(`{"name": "${this.data.streamName}", "events": [{`);
-
     this.streamProperties.forEach((element) => {
-      if (element.type === 'STRING') {
-        stringArray.push(`"${element.name}": "${element.value}",`);
-      } else {
-        stringArray.push(`"${element.name}": ${element.value},`);
+      switch (element.type) {
+        case 'STRING':
+          stringArray.push(`"${element.name}": "${element.value}",`);
+          break;
+        case 'GEOMETRY':
+          stringArray.push(
+            `"${element.name}" : {"type" : "Point", "coordinates" : [ ${element.coordinates[0]}, ${element.coordinates[1]} ] },`
+          );
+          break;
+        default:
+          stringArray.push(`"${element.name}": ${element.value},`);
+          break;
       }
     });
 
     stringArray.push(
       `"tstart": ${this.startTimestamp}, "tend": ${this.endTimestamp}}]}`
     );
-
     this.dialogRef.close(stringArray.join(''));
   }
 }

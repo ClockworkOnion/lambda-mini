@@ -5,4 +5,5 @@ export interface streamSchema {
   value: string;
   startTimestamp: number;
   endTimestamp: number;
+  coordinates: number[];
 }
