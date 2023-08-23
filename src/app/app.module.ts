@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -69,6 +70,7 @@ import { InsertElementsDialogComponent } from './dialogs/insert-elements-dialog/
     MatButtonModule,
     MatInputModule,
     MatSlideToggleModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatDividerModule,
     MatRadioModule,

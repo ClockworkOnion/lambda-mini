@@ -9,65 +9,74 @@
       <div class="tableHead">Query Text</div>
     </div>
     <div *ngFor="let entry of queries; let i = index">
-      <div class="queryListContainer">
-        <div class="queryIdEntry">{{ entry.queryId }}</div>
-        <div class="queryEntry">
-          {{ entry.query }}
+      <div *ngIf="(entry.isFavorite && filterFavorites) || !filterFavorites">
+        <div class="queryListContainer">
+          <div class="queryIdEntry">{{ entry.queryId }}</div>
+          <div class="queryEntry">
+            {{ entry.query }}
+          </div>
         </div>
+
+        <div class="bottomContainer">
+          <div>
+            <button
+              class="queryControl"
+              mat-raised-button
+              color="primary"
+              (click)="deleteQuery(entry.queryId)"
+            >
+              Delete
+            </button>
+          </div>
+
+          <div>
+            <button
+              class="queryControl"
+              mat-raised-button
+              color="primary"
+              (click)="getSchema(entry.query)"
+            >
+              Get Schema
+            </button>
+          </div>
+
+          <div>
+            <button
+              class="queryControl"
+              mat-raised-button
+              color="primary"
+              (click)="onDuplicate(entry.query)"
+            >
+              Duplicate
+            </button>
+          </div>
+
+          <div>
+            <button
+              class="queryControl"
+              mat-raised-button
+              color="primary"
+              (click)="onEdit(entry.queryId, entry.query)"
+            >
+              Edit Query
+            </button>
+          </div>
+
+          <div>
+            <mat-checkbox [(ngModel)]="entry.isFavorite">Favorite</mat-checkbox>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
       </div>
-
-      <div class="bottomContainer">
-        <div>
-          <button
-            class="queryControl"
-            mat-raised-button
-            color="primary"
-            (click)="deleteQuery(entry.queryId)"
-          >
-            Delete
-          </button>
-        </div>
-
-        <div>
-          <button
-            class="queryControl"
-            mat-raised-button
-            color="primary"
-            (click)="getSchema(entry.query)"
-          >
-            Get Schema
-          </button>
-        </div>
-
-        <div>
-          <button
-            class="queryControl"
-            mat-raised-button
-            color="primary"
-            (click)="onDuplicate(entry.query)"
-          >
-            Duplicate
-          </button>
-        </div>
-
-        <div>
-          <button
-            class="queryControl"
-            mat-raised-button
-            color="primary"
-            (click)="onEdit(entry.queryId, entry.query)"
-          >
-            Edit Query
-          </button>
-        </div>
-      </div>
-      <mat-divider></mat-divider>
     </div>
   </div>
 
   <!-- <div class="statusText">
     <pre>{{ statusText }}</pre>
   </div> -->
+  <mat-checkbox [(ngModel)]="filterFavorites"
+    >Filter for favorites</mat-checkbox
+  >
   <div class="buttons">
     <button mat-raised-button color="primary" (click)="getQueries()">
       Update Query List

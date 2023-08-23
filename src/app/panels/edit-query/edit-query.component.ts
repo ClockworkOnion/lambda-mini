@@ -17,6 +17,7 @@ export class EditQueryComponent {
   statusText = '';
   queries: queryInterface[] = [];
   errorMessage = 'No queries found. Check connection with ChronicleDB.';
+  filterFavorites: boolean = false;
 
   constructor(
     private apiService: ApiService,
