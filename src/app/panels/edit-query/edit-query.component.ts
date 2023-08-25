@@ -7,6 +7,8 @@ import { ConfirmDeleteComponent } from 'src/app/dialogs/confirm-delete/confirm-d
 import { DuplicateQueryComponent } from 'src/app/dialogs/duplicate-query/duplicate-query.component';
 import { EditQueryTextComponent } from 'src/app/dialogs/edit-query-text/edit-query-text.component';
 import { StatusTextService } from 'src/app/status-text.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 @Component({
   selector: 'app-edit-query',
   templateUrl: './edit-query.component.html',
@@ -22,7 +24,8 @@ export class EditQueryComponent {
   constructor(
     private apiService: ApiService,
     private dialog: MatDialog,
-    private statusWindow: StatusTextService
+    private statusWindow: StatusTextService,
+    private favoriteService: FavoriteService
   ) {}
 
   ngOnInit(): void {
@@ -117,5 +120,21 @@ export class EditQueryComponent {
         });
       });
     });
+  }
+
+  addFavorite(queryId: string): void {
+    this.favoriteService.addFavorite(queryId);
+  }
+
+  removeFavorite(queryId: string): void {
+    this.favoriteService.removeFavorite(queryId);
+  }
+
+  isFavorite(queryId: string): boolean {
+    return this.favoriteService.isFavorite(queryId);
+  }
+
+  toggleFavorite(event: MatCheckboxChange, id: string): void {
+    this.favoriteService.toggleFavorite(id);
   }
 }

@@ -9,7 +9,7 @@
       <div class="tableHead">Query Text</div>
     </div>
     <div *ngFor="let entry of queries; let i = index">
-      <div *ngIf="(entry.isFavorite && filterFavorites) || !filterFavorites">
+      <div *ngIf="isFavorite(entry.queryId) || !filterFavorites">
         <div class="queryListContainer">
           <div class="queryIdEntry">{{ entry.queryId }}</div>
           <div class="queryEntry">
@@ -63,7 +63,11 @@
           </div>
 
           <div>
-            <mat-checkbox [(ngModel)]="entry.isFavorite">Favorite</mat-checkbox>
+            <mat-checkbox
+              [checked]="isFavorite(entry.queryId)"
+              (change)="toggleFavorite($event, entry.queryId)"
+              >Favorite</mat-checkbox
+            >
           </div>
         </div>
         <mat-divider></mat-divider>
